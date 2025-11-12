@@ -1,0 +1,13 @@
+.app {
+  padding: 20px;
+}
+
+.container {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+h1 {
+  margin-bottom: 20px;
+}

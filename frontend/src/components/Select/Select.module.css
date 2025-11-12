@@ -1,0 +1,106 @@
+.select {
+  position: relative;
+  width: 250px;
+}
+
+.selectHeader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--option-border-color);
+  height: 40px;
+  border-radius: 0;
+  padding: 8px;
+  cursor: pointer;
+  background: white;
+  outline: none;
+}
+
+.selectHeader.open,
+.selectHeader:focus,
+.selectHeader:hover {
+  border-bottom-width: 2px;
+  border-bottom-color: var(--button-border-color);
+}
+
+.searchInput {
+  border: none;
+  outline: none;
+  flex: 1;
+  font-size: 14px;
+  background: transparent;
+}
+
+.clearButton {
+  opacity: 0;
+  pointer-events: none;
+  margin-left: 4px;
+  border: none;
+  background: var(--option-hover-bg);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.selectHeader:hover .clearButton {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.arrow {
+  margin-left: 5px;
+  border: none;
+  background: var(--option-hover-bg);
+  cursor: pointer;
+  font-size: 14px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+}
+
+.optionsList {
+  position: absolute;
+  left: 0;
+  right: 0;
+  max-height: 250px;
+  overflow-y: auto;
+  border-top: none;
+  background: white;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.optionsList.down {
+  top: 100%;
+  border-top: none;
+}
+
+.optionsList.up {
+  bottom: 100%;
+  border-bottom: none;
+}
+
+.option {
+  padding: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.option:hover {
+  background-color: var(--option-hover-bg);
+}
+
+.option.highlighted {
+  background-color: var(--option-keyboard-bg);
+}
+
+.option.selected {
+  background-color: var(--option-selected-bg);
+}

@@ -1,0 +1,25 @@
+.button {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid var(--button-border-color);
+  border-radius: 3px;
+  color: var(--button-text-color);
+  cursor: pointer;
+  font-size: 14px;
+  background: white;
+  transition: border-width 0.2s ease, opacity 0.2s ease;
+  user-select: none;
+  text-decoration: none;
+  height: 40px;
+}
+
+.button:hover,
+.button:focus {
+  border-width: 2px;
+}
+
+.button[aria-disabled='true'] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
