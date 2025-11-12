@@ -1,0 +1,25 @@
+:root {
+  --button-border-color: #0066cc;
+  --button-text-color: #0066cc;
+  --option-border-color: #f0f0f0;
+  --option-hover-bg: #f0f0f0;
+  --option-keyboard-bg: #e8e8e8;
+  --option-selected-bg: #dedede;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
