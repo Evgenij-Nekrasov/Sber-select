@@ -1,4 +1,5 @@
-import { useState, useMemo } from 'react';
+import { useCallback, useMemo, useState } from 'react';
+
 import type { Option } from '@/types';
 
 interface UseSelectStateProps {
@@ -18,38 +19,20 @@ export function useSelectState({ options }: UseSelectStateProps) {
     [options, searchTerm],
   );
 
-  const resetState = () => {
+  const resetSearchState = useCallback(() => {
     setSearchTerm('');
     setHighlightedIndex(0);
-  };
-
-  const openDropdown = () => {
-    setIsOpen(true);
-  };
-
-  const closeDropdown = () => {
-    setIsOpen(false);
-    resetState();
-  };
-
-  const toggleDropdown = () => {
-    if (isOpen) {
-      closeDropdown();
-    } else {
-      openDropdown();
-    }
-  };
+  }, []);
 
   return {
     isOpen,
+    setIsOpen,
     searchTerm,
-    highlightedIndex,
-    filteredOptions,
     setSearchTerm,
+    highlightedIndex,
     setHighlightedIndex,
-    openDropdown,
-    closeDropdown,
-    toggleDropdown,
-    resetState,
+    filteredOptions,
+    resetSearchState,
   };
 }
+

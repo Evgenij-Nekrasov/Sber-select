@@ -24,6 +24,16 @@ const optionSlice = createSlice({
     setSelectedOption: (state, action: PayloadAction<Option | null>) => {
       state.selectedOption = action.payload;
     },
+    clearMessage: (state) => {
+      state.message = '';
+    },
+    clearError: (state) => {
+      state.error = null;
+    },
+    clearMessages: (state) => {
+      state.message = '';
+      state.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -37,6 +47,7 @@ const optionSlice = createSlice({
       .addMatcher(isPending(fetchOptions, sendSelectedOption), (state) => {
         state.loading = true;
         state.error = null;
+        state.message = '';
       })
       .addMatcher(isFulfilled(fetchOptions, sendSelectedOption), (state) => {
         state.loading = false;
@@ -54,5 +65,6 @@ const optionSlice = createSlice({
   },
 });
 
-export const { setSelectedOption } = optionSlice.actions;
+export const { setSelectedOption, clearMessage, clearError, clearMessages } =
+  optionSlice.actions;
 export default optionSlice.reducer;

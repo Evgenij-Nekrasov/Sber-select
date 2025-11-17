@@ -1,11 +1,13 @@
 import { useSelect } from '@/features/select';
 import type { Option } from '@/types';
+
 import styles from './Select.module.css';
 
 interface SelectProps {
   options: Option[];
   selectedOption: Option | null;
   onSelect: (option: Option) => void;
+  onClearSelection: () => void;
   placeholder?: string;
 }
 
@@ -13,6 +15,7 @@ export const Select = ({
   options,
   selectedOption,
   onSelect,
+  onClearSelection,
   placeholder,
 }: SelectProps) => {
   const {
@@ -24,6 +27,7 @@ export const Select = ({
     searchTerm,
     highlightedIndex,
     filteredOptions,
+    displayValue,
     toggleDropdown,
     openDropdown,
     setIsOpen,
@@ -32,9 +36,12 @@ export const Select = ({
     handleKeyDown,
     handleClear,
     setHighlightedIndex,
-  } = useSelect({ options, onSelect });
-
-  const displayValue = searchTerm || selectedOption?.name || '';
+  } = useSelect({
+    options,
+    selectedOption,
+    onSelect,
+    onClearSelection,
+  });
 
   return (
     <div
@@ -101,10 +108,7 @@ export const Select = ({
               } ${
                 selectedOption?.value === option.value ? styles.selected : ''
               }`}
-              onMouseDown={(e) => {
-                e.preventDefault();
-                handleSelect(option);
-              }}
+              onMouseDown={() => handleSelect(option)}
               onMouseEnter={() => setHighlightedIndex(index)}
               role="option"
               aria-selected={selectedOption?.value === option.value}
